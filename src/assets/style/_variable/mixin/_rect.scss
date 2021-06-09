@@ -1,0 +1,11 @@
+@use '../function/rem' as *;
+@use '../function/vw' as *;
+
+@mixin rect($w: null, $h: null) {
+  @if $w != null and $h == null {
+    $h: $w;
+  }
+
+  width: $w;
+  height: $h;
+}

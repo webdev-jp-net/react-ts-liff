@@ -1,0 +1,6 @@
+@mixin tracking($s: 50) {
+  $val: 0.001 * $s * 1em;
+
+  text-indent: -0.5 * $val;
+  letter-spacing: $val;
+}

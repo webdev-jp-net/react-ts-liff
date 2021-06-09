@@ -1,0 +1,86 @@
+@use "../_variable" as *;
+
+.dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(24);
+
+  &:not(.isOpen) {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.isOpen {
+    pointer-events: default;
+    user-select: auto;
+  }
+}
+
+.screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $c_screen;
+
+  :not(.isOpen) & {
+    opacity: 0;
+    transition: opacity $t_ease;
+  }
+
+  .isOpen & {
+    opacity: 1;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 86vh;
+  padding: rem(10);
+  color: $c_darkness;
+  background-color: $c_lightness;
+  border-radius: rem(24);
+
+  :not(.isOpen) & {
+    opacity: 0;
+  }
+
+  .isOpen & {
+    opacity: 1;
+    transition: opacity $t_ease;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 98%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: rem(24);
+  }
+
+  .button {
+    min-height: rem(48);
+    margin: rem(20) 0;
+  }
+
+}
