@@ -1,2 +1,3 @@
-# LIFFアプリ開発セット（React+TypeScript）
-LIFFアプリケーションを開発するプロジェクトのサンプルです。
+# LIFF アプリ開発セット（React+TypeScript）
+
+LIFF アプリケーションを開発するプロジェクトのサンプルです。
