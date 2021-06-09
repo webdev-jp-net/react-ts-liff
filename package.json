@@ -10,7 +10,6 @@
   "author": "webdev",
   "license": "UNLICENSED",
   "scripts": {
-    "prepare": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -18,15 +17,6 @@
     "lint:js": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{scss,tsx} --ignore-path .gitignore",
     "lint": "npm run lint:js && npm run lint:style"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": "eslint",
-    "*.{scss,tsx}": "stylelint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "browserslist": [
     "iOS >= 12.0",
