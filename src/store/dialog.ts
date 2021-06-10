@@ -1,14 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type State = {
   isOpen: boolean;
-  content: HTMLElement | null;
+  content?: JSX.Element;
   class?: string[];
 };
 
 const initialState: State = {
   isOpen: false,
-  content: null,
 };
 
 const dialog = createSlice({
@@ -17,52 +16,31 @@ const dialog = createSlice({
   initialState,
 
   reducers: {
-    updateOpen: (state, action) => {
-      const result: {
-        isOpen: boolean;
-        class?: string[];
-      } = {
-        isOpen: action.payload,
-      };
-      if (action.payload === true) {
-        // open
-        document.body.classList.add('isFixedScroll');
-      } else {
-        // close
-        document.body.classList.remove('isFixedScroll');
-        result.class = [];
-      }
+    updateOpen: (state, action: PayloadAction<boolean>) => {
+      // open | close
+      document.body.classList[action.payload ? 'add' : 'remove']('isFixedScroll');
       return {
         ...state,
-        ...result,
+        isOpen: action.payload,
+        class: action.payload ? state.class : [],
       };
     },
-    updateContent: (state, action) => {
-      const result: {
-        content: HTMLDivElement;
-      } = {
-        content: action.payload,
-      };
+    updateContent: (state, action: PayloadAction<JSX.Element>) => {
       return {
         ...state,
-        ...result,
+        content: action.payload,
       };
     },
     updateClass: (state, action) => {
-      const result: {
-        class: string[];
-      } = {
-        class: [state.class, ...action.payload],
-      };
       return {
         ...state,
-        ...result,
+        class: [state.class, ...action.payload],
       };
     },
   },
 });
 
-// Action Creators
+// Action Creator
 export const { updateOpen, updateContent, updateClass } = dialog.actions;
 
 // Reducer

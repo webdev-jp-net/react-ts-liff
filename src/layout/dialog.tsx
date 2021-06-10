@@ -13,7 +13,7 @@ export const Dialog: FC = () => {
   const dispatch = useDispatch();
 
   const { isOpen, content } = useSelector((state: RootState) => state.dialog);
-  const classname = useSelector((state: RootState) => state.dialog.class) ?? [];
+  const classname = (useSelector((state: RootState) => state.dialog.class) ?? []) as string[];
 
   const [parentClass, setParentClass] = useState<string[]>([style.dialog]);
 
