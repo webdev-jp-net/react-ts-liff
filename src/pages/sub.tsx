@@ -38,7 +38,7 @@ export const Sub: FC = () => {
     dispatch(updateDummyText(tmpValue));
   };
 
-  // ページを表示したとき
+  // ページタイトル
   useEffect(() => {
     document.title = `subページ`;
   }, [history]);

@@ -2,10 +2,12 @@ import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/
 
 import dialog from './dialog';
 import hogefuga from './hogefuga';
+import user from './user';
 
 const reducer = combineReducers({
   dialog,
   hogefuga,
+  user,
 });
 
 const middleware = getDefaultMiddleware({ serializableCheck: false });
