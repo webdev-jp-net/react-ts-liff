@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type State = {
-  userid?: string;
+  userId?: string;
 };
 
 const initialState: State = {};
@@ -12,11 +12,11 @@ const user = createSlice({
   initialState,
 
   reducers: {
-    updateUserid: (state, action) => {
+    updateUserId: (state, action) => {
       const result: {
-        userid: string;
+        userId: string;
       } = {
-        userid: action.payload,
+        userId: action.payload,
       };
       return {
         ...state,
@@ -27,7 +27,7 @@ const user = createSlice({
 });
 
 // Action Creators
-export const { updateUserid } = user.actions;
+export const { updateUserId } = user.actions;
 
 // Reducer
 export default user.reducer;

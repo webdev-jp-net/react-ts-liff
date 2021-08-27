@@ -3,7 +3,7 @@ import { FC, useEffect, useCallback } from 'react';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { updateUserid } from '../store/user';
+import { updateUserId } from '../store/user';
 
 // liff
 import liff from '@line/liff';
@@ -13,7 +13,7 @@ import { Private } from './private';
 
 export const Routes: FC = () => {
   const dispatch = useDispatch();
-  const { userid } = useSelector((state: RootState) => state.user);
+  const { userId } = useSelector((state: RootState) => state.user);
 
   // LIFFにログインする
   const doLoginLiff = useCallback(() => {
@@ -26,8 +26,8 @@ export const Routes: FC = () => {
           if (!liff.isInClient() && !liff.isLoggedIn()) liff.login({}); // LIFFブラウザで起動していない場合はLINEログインする
 
           // LINE ユーザIDをstoreへ保存
-          const decordIdToken = liff.getDecodedIDToken();
-          if (decordIdToken?.sub) dispatch(updateUserid(decordIdToken.sub));
+          const decodeIdToken = liff.getDecodedIDToken();
+          if (decodeIdToken?.sub) dispatch(updateUserId(decodeIdToken.sub));
         })
         .catch(err => {
           console.log('error', err);
@@ -43,5 +43,5 @@ export const Routes: FC = () => {
     if (!liff.isInClient()) doLoginLiff();
   }, [doLoginLiff]);
 
-  return userid ? <Private /> : <></>;
+  return userId ? <Private /> : <></>;
 };

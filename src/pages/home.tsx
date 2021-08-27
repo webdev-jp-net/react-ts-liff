@@ -25,7 +25,7 @@ export const Home: FC = () => {
 
   const history = useHistory();
 
-  const { userid } = useSelector((state: RootState) => state.user);
+  const { userId } = useSelector((state: RootState) => state.user);
 
   // ダイアログ
   const openDialog = () => {
@@ -53,7 +53,7 @@ export const Home: FC = () => {
     <div className={`l-page ${style.home}`}>
       <h1>HOME</h1>
       <p>ここへページの内容を表示</p>
-      <p>{userid}</p>
+      <p>{userId}</p>
       <button type="button" onClick={openDialog}>
         ダイアログ
       </button>
