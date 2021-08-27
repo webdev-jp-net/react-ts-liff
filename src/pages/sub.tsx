@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/ban-ts-comment: 0 */
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 // router
 import { useHistory, useParams } from 'react-router-dom';
