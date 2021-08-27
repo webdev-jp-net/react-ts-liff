@@ -1,5 +1,4 @@
-/* eslint @typescript-eslint/ban-ts-comment: 0 */
-import React, { FC, useEffect, useCallback } from 'react';
+import React, { FC, useEffect } from 'react';
 
 // router
 import { useHistory } from 'react-router-dom';
@@ -8,10 +7,6 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { updateOpen, updateContent, updateClass } from '../store/dialog';
-import { updateUserid } from '../store/user';
-
-// liff
-import liff from '@line/liff';
 
 // WebVitals
 import reportWebVitals from '../reportWebVitals';
@@ -32,28 +27,6 @@ export const Home: FC = () => {
 
   const { userid } = useSelector((state: RootState) => state.user);
 
-  // LIFFにログインする
-  const actLoginLiff = useCallback(() => {
-    try {
-      liff
-        .init({
-          liffId: process.env.REACT_APP_LIFF_ID as string,
-        })
-        .then(() => {
-          if (!liff.isInClient() && !liff.isLoggedIn()) liff.login({}); // LIFFブラウザで起動していない場合はLINEログインする
-
-          // LINE ユーザIDをstoreへ保存
-          const decordIdToken = liff.getDecodedIDToken();
-          if (decordIdToken?.sub) dispatch(updateUserid(decordIdToken.sub));
-        })
-        .catch(err => {
-          console.log('error', err);
-        });
-    } catch (err) {
-      alert(`LIFF initialize failed ${err}`);
-    }
-  }, [dispatch]);
-
   // ダイアログ
   const openDialog = () => {
     const dialogBody = (
@@ -69,24 +42,12 @@ export const Home: FC = () => {
   // ページタイトル
   useEffect(() => {
     document.title = `HOME`;
-  }, [actLoginLiff, history]);
+  }, []);
 
   // ページを表示したとき
   useEffect(() => {
-    // LIFFブラウザで起動していない場合はこのタイミングでliff.init
-    if (!liff.isInClient()) actLoginLiff();
     reportWebVitals(console.log);
-  }, [actLoginLiff]);
-
-  // ページを表示したとき
-  // LINEアプリ から LIFF を起動したとき対策
-  window.addEventListener(
-    'load',
-    () => {
-      if (!userid) actLoginLiff();
-    },
-    { once: true }
-  );
+  }, []);
 
   return (
     <div className={`l-page ${style.home}`}>
