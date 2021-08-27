@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/ban-ts-comment: 0 */
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 // router
 import { useHistory, useParams } from 'react-router-dom';
@@ -8,6 +8,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { updateDummyText } from '../store/hogefuga';
+
+// hooks
+import { usePageTitle } from '../hooks/usePageTitle';
 
 // assets
 import style from '../assets/style/pages/sub.module.scss';
@@ -39,9 +42,7 @@ export const Sub: FC = () => {
   };
 
   // ページタイトル
-  useEffect(() => {
-    document.title = `subページ`;
-  }, [history]);
+  usePageTitle(`subページ`);
 
   return (
     <div className={`l-page ${style.sub}`}>
