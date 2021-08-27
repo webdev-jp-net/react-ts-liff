@@ -8,6 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { updateOpen, updateContent, updateClass } from '../store/dialog';
 
+// hooks
+import { usePageTitle } from '../hooks/usePageTitle';
+
 // WebVitals
 import reportWebVitals from '../reportWebVitals';
 
@@ -39,15 +42,13 @@ export const Home: FC = () => {
     dispatch(updateOpen(true));
   };
 
-  // ページタイトル
-  useEffect(() => {
-    document.title = `HOME`;
-  }, []);
-
   // ページを表示したとき
   useEffect(() => {
     reportWebVitals(console.log);
   }, []);
+
+  // ページタイトル
+  usePageTitle(`HOME`);
 
   return (
     <div className={`l-page ${style.home}`}>

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-// hooks
-import { useAuthLiff } from '../hooks/useAuthLiff';
-
 // redux
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+
+// hooks
+import { useAuthLiff } from '../hooks/useAuthLiff';
 
 // component
 import { Private } from './private';
