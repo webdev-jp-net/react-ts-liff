@@ -1,3 +1,3 @@
 @function vw($target, $screen: 375) {
-  @return ($target / $screen) * 100vw;
+  @return math.div($target, $screen) * 100vw;
 }
