@@ -1,53 +1,67 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useState } from 'react';
 
-// redux
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
-import { updateUserId } from '../store/user';
+import { useDispatch } from 'react-redux';
 
-// liff
 import liff from '@line/liff';
+import { updateUserId } from 'store/user';
+
+// type
+type QueryStatus = {
+  response: string;
+  loading: boolean;
+  error: string;
+};
 
 // Liffアプリ初期化
-export const useAuthLiff = (): void => {
+export const useAuthLiff = (): QueryStatus => {
   const dispatch = useDispatch();
-  const { userId } = useSelector((state: RootState) => state.user);
+
+  const [response, setResponse] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
   // LIFFにログインする
+  const liffId = process.env.REACT_APP_LIFF_ID as string;
   const actLoginLiff = useCallback(() => {
+    setLoading(true); // 処理開始
     try {
       liff
-        .init({
-          liffId: process.env.REACT_APP_LIFF_ID as string,
-        })
+        .init({ liffId })
         .then(() => {
-          if (!liff.isInClient() && !liff.isLoggedIn()) liff.login({}); // LIFFブラウザで起動していない場合はLINEログインする
+          // LIFFブラウザで起動していない場合はLINEログインする
+          if (!liff.isInClient() && !liff.isLoggedIn()) liff.login({});
 
           // LINE ユーザIDをstoreへ保存
           const decodeIdToken = liff.getDecodedIDToken();
-          if (decodeIdToken?.sub) dispatch(updateUserId(decodeIdToken.sub));
+          if (decodeIdToken?.sub) {
+            const userId = decodeIdToken.sub;
+            dispatch(updateUserId(userId));
+            setResponse(userId);
+            setLoading(false); // 処理終了
+          } else {
+            setError('ユーザIDの取得に失敗しました');
+            setLoading(false); // 処理終了
+
+            // GA: LIFFのログインに失敗
+            window.gtag('event', 'error_LIFF_init', { method: 'user_id' });
+          }
         })
         .catch(err => {
-          console.log('error', err);
+          setError(err);
+          setLoading(false); // 処理終了
         });
     } catch (err) {
       alert(`LIFF initialize failed ${err}`);
     }
-  }, [dispatch]);
+  }, [dispatch, liffId]);
 
   // ページを表示したとき
-  useEffect(() => {
-    // LIFFブラウザで起動していない場合はこのタイミングでliff.init
-    if (!liff.isInClient()) actLoginLiff();
-  }, [actLoginLiff]);
+  const forLineApp = useCallback(() => {
+    if (!response && !loading) actLoginLiff();
+  }, [response, loading, actLoginLiff]);
+  // LINEアプリからLIFFを起動したときaddEventListenerから呼出さないと実行できない
+  window.addEventListener('load', forLineApp, { once: true });
 
-  // ページを表示したとき
-  // LINEアプリ から LIFF を起動したとき対策
-  window.addEventListener(
-    'load',
-    () => {
-      if (!userId) actLoginLiff();
-    },
-    { once: true }
-  );
+  // 戻り値
+  return { response, loading, error };
 };
