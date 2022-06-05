@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["liff-type"]
+    "types": ["liff-type"],
+    "baseUrl": "src"
   },
   "include": ["src"]
 }
