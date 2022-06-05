@@ -13,15 +13,7 @@ const user = createSlice({
 
   reducers: {
     updateUserId: (state, action) => {
-      const result: {
-        userId: string;
-      } = {
-        userId: action.payload,
-      };
-      return {
-        ...state,
-        ...result,
-      };
+      state.userId = action.payload;
     },
   },
 });
