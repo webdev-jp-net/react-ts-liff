@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 
 // router
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,7 +26,7 @@ import style from '../assets/style/pages/home.module.scss';
 export const Home: FC = () => {
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { userId } = useSelector((state: RootState) => state.user);
 
@@ -61,7 +61,7 @@ export const Home: FC = () => {
       <button
         type="button"
         onClick={() => {
-          history.push('/sub/1');
+          navigate('/sub/1');
         }}
       >
         1のページへ移動
