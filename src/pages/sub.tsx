@@ -22,15 +22,12 @@ import style from '../assets/style/pages/sub.module.scss';
 // import { Fuga } from '../@types/fuga';
 
 // function component
-interface ParamTypes {
-  id: string;
-}
 
 export const Sub: FC = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const { id } = useParams<ParamTypes>();
+  const { id } = useParams();
 
   const { dummyText } = useSelector((state: RootState) => state.hogefuga);
 
