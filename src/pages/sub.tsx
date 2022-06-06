@@ -51,7 +51,7 @@ export const Sub: FC = () => {
       <button
         type="button"
         onClick={() => {
-          navigate.push('/');
+          navigate('/');
         }}
       >
         HOMEへ移動

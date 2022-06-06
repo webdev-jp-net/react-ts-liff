@@ -61,7 +61,7 @@ export const Home: FC = () => {
       <button
         type="button"
         onClick={() => {
-          navigate.push('/sub/1');
+          navigate('/sub/1');
         }}
       >
         1のページへ移動
