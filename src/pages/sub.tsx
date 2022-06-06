@@ -2,7 +2,7 @@
 import React, { FC, useState } from 'react';
 
 // router
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,7 +29,7 @@ interface ParamTypes {
 export const Sub: FC = () => {
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { id } = useParams<ParamTypes>();
 
   const { dummyText } = useSelector((state: RootState) => state.hogefuga);
@@ -51,7 +51,7 @@ export const Sub: FC = () => {
       <button
         type="button"
         onClick={() => {
-          history.push('/');
+          navigate.push('/');
         }}
       >
         HOMEへ移動
