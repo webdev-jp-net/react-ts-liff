@@ -41,9 +41,6 @@ export const useAuthLiff = (): QueryStatus => {
           } else {
             setError('ユーザIDの取得に失敗しました');
             setLoading(false); // 処理終了
-
-            // GA: LIFFのログインに失敗
-            window.gtag('event', 'error_LIFF_init', { method: 'user_id' });
           }
         })
         .catch(err => {
