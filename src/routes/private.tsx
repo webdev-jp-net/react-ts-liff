@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 // router
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // pages
 import { Home } from '../pages/home';
@@ -13,10 +13,10 @@ import { Dialog } from '../layout/dialog';
 export const Private: FC = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/sub/:id" component={Sub} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sub/:id" element={<Sub />} />
+      </Routes>
       <Dialog />
     </BrowserRouter>
   );
