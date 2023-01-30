@@ -18,6 +18,6 @@
     "types": ["liff-type"],
     "baseUrl": "src"
   },
-  "include": ["src"],
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx"],
   "exclude": ["node_modules", "document"]
 }
