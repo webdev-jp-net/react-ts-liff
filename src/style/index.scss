@@ -1,5 +1,5 @@
 @use 'modern-css-reset';
-@use "_variable" as *;
+@use '_variable' as *;
 
 // GoogleFonts
 // @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Montserrat:wght@800&display=swap');
@@ -9,8 +9,10 @@ body {
   margin: 0;
   font-family: 'Hiragino Kaku Gothic ProN', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   font-size: vw(16); // 幅375pxのアートボードで16px相当
-  color: $c_dark;
-  background-color: $c_lightness;
+  // color: $c_dark;
+  color: $c_lightness;
+  // background-color: $c_lightness;
+  background-color: $c_dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

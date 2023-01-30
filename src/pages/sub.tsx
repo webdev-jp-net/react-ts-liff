@@ -13,7 +13,7 @@ import { updateDummyText } from '../store/hogefuga';
 import { usePageTitle } from '../hooks/usePageTitle';
 
 // assets
-import style from '../assets/style/pages/sub.module.scss';
+import style from '../style/pages/sub.module.scss';
 
 // component
 // import { Hoge } from '../components/hoge';

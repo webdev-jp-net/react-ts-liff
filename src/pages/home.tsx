@@ -15,7 +15,7 @@ import { usePageTitle } from '../hooks/usePageTitle';
 import reportWebVitals from '../reportWebVitals';
 
 // assets
-import style from '../assets/style/pages/home.module.scss';
+import style from '../style/pages/home.module.scss';
 
 // component
 // import { Hoge } from '../components/hoge';

@@ -6,7 +6,7 @@ import { RootState } from '../store';
 import { updateOpen } from '../store/dialog';
 
 // assets
-import style from '../assets/style/layout/dialog.module.scss';
+import style from '../style/layout/dialog.module.scss';
 
 // function component
 export const Dialog: FC = () => {
