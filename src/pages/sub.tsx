@@ -6,20 +6,20 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
-import { updateDummyText } from '../store/hogefuga';
+import { RootState } from 'store';
+import { updateDummyText } from 'store/hogefuga';
 
 // hooks
-import { usePageTitle } from '../hooks/usePageTitle';
+import { usePageTitle } from 'hooks/usePageTitle';
 
 // assets
-import style from '../style/pages/sub.module.scss';
+import style from 'style/pages/sub.module.scss';
 
 // component
-// import { Hoge } from '../components/hoge';
+// import { Hoge } from 'components/hoge';
 
 // type
-// import { Fuga } from '../@types/fuga';
+// import { Fuga } from '@types/fuga';
 
 // function component
 

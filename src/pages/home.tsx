@@ -5,17 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
-import { updateOpen, updateContent, updateClass } from '../store/dialog';
+import { RootState } from 'store';
+import { updateOpen, updateContent, updateClass } from 'store/dialog';
 
 // hooks
-import { usePageTitle } from '../hooks/usePageTitle';
+import { usePageTitle } from 'hooks/usePageTitle';
 
 // WebVitals
 import reportWebVitals from '../reportWebVitals';
 
 // assets
-import style from '../style/pages/home.module.scss';
+import style from 'style/pages/home.module.scss';
 
 // component
 // import { Hoge } from '../components/hoge';

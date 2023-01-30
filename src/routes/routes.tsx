@@ -4,13 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 
 // redux
 import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { RootState } from 'store';
 
 // component
 import { Private } from './private';
 
 // hooks
-import { useAuthLiff } from '../hooks/useAuthLiff';
+import { useAuthLiff } from 'hooks/useAuthLiff';
 
 export const Routes: FC = () => {
   useAuthLiff(); // LIFFにログインする
