@@ -12,16 +12,16 @@ import { updateOpen, updateContent, updateClass } from 'store/dialog';
 import { usePageTitle } from 'hooks/usePageTitle';
 
 // WebVitals
-import reportWebVitals from '../reportWebVitals';
+import reportWebVitals from 'reportWebVitals';
 
 // assets
 import style from 'style/pages/home.module.scss';
 
 // component
-// import { Hoge } from '../components/hoge';
+// import { Hoge } from 'components/hoge';
 
 // type
-// import { Fuga } from '../@types/fuga';
+// import { Fuga } from '@types/fuga';
 
 export const Home: FC = () => {
   const dispatch = useDispatch();
