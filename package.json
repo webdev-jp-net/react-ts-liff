@@ -1,7 +1,7 @@
 {
   "name": "react-ts-liff",
   "description": "LIFFアプリケーションを開発するプロジェクトのサンプル",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
     "lint:style": "stylelint src/**/*.{scss,tsx} --ignore-path .gitignore",
     "lint": "npm run lint:js && npm run lint:style",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{scss,tsx}": "npm run lint:style",
@@ -32,6 +34,10 @@
     "@line/bot-sdk": "^7.5.0",
     "@line/liff": "^2.20.1",
     "@reduxjs/toolkit": "^1.8.2",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/react": "^6.5.9",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -46,7 +52,11 @@
     "@typescript-eslint/parser": "^5.27.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-storybook": "^0.5.13",
+    "fs": "^0.0.1-security",
+    "html-react-parser": "^3.0.1",
     "husky": "^8.0.1",
     "liff-type": "^2.1.3",
     "lint-staged": "^13.0.0",
@@ -66,6 +76,7 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard": "^25.0.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
   }
