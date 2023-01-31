@@ -4,8 +4,8 @@ import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // pages
-import { Home } from 'pages/home';
-import { Sub } from 'pages/sub';
+import { Home } from 'components/pages/Home';
+import { Sub } from 'components/pages/Sub';
 
 // layout
 import { Dialog } from 'layout/dialog';
