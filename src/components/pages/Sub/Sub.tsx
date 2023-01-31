@@ -1,24 +1,19 @@
 /* eslint @typescript-eslint/ban-ts-comment: 0 */
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 
-// router
 import { useNavigate, useParams } from 'react-router-dom';
 
-// redux
 import { useSelector, useDispatch } from 'react-redux';
+
 import { RootState } from 'store';
 import { updateDummyText } from 'store/hogefuga';
 
-// hooks
 import { usePageTitle } from 'hooks/usePageTitle';
 
-// assets
 import style from './Sub.module.scss';
 
-// component
 // import { Hoge } from 'components/hoge';
 
-// type
 // import { Fuga } from '@types/fuga';
 
 // function component

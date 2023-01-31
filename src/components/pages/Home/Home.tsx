@@ -1,26 +1,20 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 
-// router
 import { useNavigate } from 'react-router-dom';
 
-// redux
 import { useSelector, useDispatch } from 'react-redux';
+
+import reportWebVitals from 'reportWebVitals';
+
 import { RootState } from 'store';
 import { updateOpen, updateContent, updateClass } from 'store/dialog';
 
-// hooks
 import { usePageTitle } from 'hooks/usePageTitle';
 
-// WebVitals
-import reportWebVitals from 'reportWebVitals';
-
-// assets
 import style from './Home.module.scss';
 
-// component
 // import { Hoge } from 'components/hoge';
 
-// type
 // import { Fuga } from '@types/fuga';
 
 export const Home: FC = () => {
