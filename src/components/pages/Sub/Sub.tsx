@@ -5,12 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Button } from 'components/parts/Button';
 import { RootState } from 'store';
 import { updateDummyText } from 'store/hogefuga';
 
 import { usePageTitle } from 'hooks/usePageTitle';
 
-import style from './Sub.module.scss';
+import styles from './Sub.module.scss';
 
 // import { Hoge } from 'components/hoge';
 
@@ -37,18 +38,21 @@ export const Sub: FC = () => {
   usePageTitle(`subページ`);
 
   return (
-    <div className={`l-page ${style.sub}`}>
+    <div className={`l-page ${styles.sub}`}>
       <h1>{id} のページ</h1>
       <p>ここへページの内容を表示</p>
-      <button
-        type="button"
-        onClick={() => {
-          navigate('/');
-        }}
-      >
-        HOMEへ移動
-      </button>
+
+      <div className={styles.menu}>
+        <Button
+          handleClick={() => {
+            navigate('/');
+          }}
+        >
+          HOMEへ移動
+        </Button>
+      </div>
       <div>
+        <p>文字をinputで書き換えられます</p>
         <p>{dummyText}</p>
         <input
           type="text"
@@ -56,9 +60,7 @@ export const Sub: FC = () => {
             setTmpValue(e.currentTarget.value);
           }}
         />
-        <button type="button" onClick={updateValue}>
-          ダミーテキスト更新
-        </button>
+        <Button handleClick={updateValue}>更新</Button>
       </div>
     </div>
   );

@@ -2,88 +2,69 @@
 
 .button {
   position: relative;
-  width: min(rem(128), 100%);
-  height: rem(48);
-  padding: 0;
-  font-size: rem(18);
+  min-height: rem(36);
+  padding: 0 1.5em;
+  font-size: rem(16);
   font-weight: $f_bold;
   line-height: 1;
   color: $c_darkness;
   text-align: center;
   cursor: pointer;
   border: none;
+  border-radius: rem(4);
   appearance: normal;
-}
-
-// フォーカスリング
-@keyframes brink {
-  from {
-    outline: #fffc solid 3px;
-  }
-
-  to {
-    outline: #fff0 solid 0;
-  }
-}
-
-.button:focus-visible {
-  outline: #fffc solid 3px;
-  animation: brink 1s linear alternate-reverse infinite;
 }
 
 // 基本
 .button.--basic {
   color: $c_lightness;
-  background-color: $c_current;
+  background-color: $c_darkness;
+  background-position: center top;
+  background-size: 100% 200%;
+  border: rem(2) solid $c_darkness;
+  box-shadow: 0 0 0 $c_shadow, 0 0 0 $c_shadow;
+  transition: color $t_ease, background-color $t_ease, border-color $t_ease;
+
+  // hover
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      color: $c_darkness;
+      background-color: $c_lightness;
+      box-shadow: 0 0 rem(4) $c_shadow, 0 0 rem(8) $c_shadow;
+    }
+  }
 
   // 非活性
   &:disabled {
-    color: $c_lightness;
     pointer-events: none;
     background-color: $c_disabled;
-  }
-
-  // タップしたとき
-  &:active:not(:disabled) {
-    opacity: 0.9;
+    border-color: $c_disabled;
   }
 }
 
 // 補助
 .button.--minor {
-  color: $c_lightness;
-  background-color: $c_sub;
+  color: $c_darkness;
+  background-color: $c_lightness;
+  background-position: center top;
+  background-size: 100% 200%;
+  border: rem(2) solid $c_darkness;
+  box-shadow: 0 0 0 $c_shadow, 0 0 0 $c_shadow;
+  transition: color $t_ease, background-color $t_ease, border-color $t_ease;
 
-  // タップしたとき
-  &:active:not(:disabled) {
-    opacity: 0.9;
+  // hover
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      color: $c_lightness;
+      background-color: $c_darkness;
+      box-shadow: 0 0 rem(4) $c_shadow, 0 0 rem(8) $c_shadow;
+    }
   }
-}
 
-// アイコンつき
-.button.--icon {
-  padding: 0 0 0 rem(12);
-
-  &.--external {
-    padding: 0 rem(12) 0 0;
-  }
-}
-
-// アイコン
-.icon {
-  @include rect(rem(24));
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  margin: auto rem(20);
-  opacity: 0.8;
-
-  // 外部リンク
-  .--external & {
-    right: 0;
-    left: auto;
+  // 非活性
+  &:disabled {
+    color: $c_disabled;
+    pointer-events: none;
+    border-color: $c_disabled;
   }
 }

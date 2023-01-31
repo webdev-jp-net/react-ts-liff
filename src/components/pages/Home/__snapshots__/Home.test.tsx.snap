@@ -12,16 +12,22 @@ exports[`Home Homeのスナップショット 1`] = `
       ここへページの内容を表示
     </p>
     <p />
-    <button
-      type="button"
+    <div
+      class="menu"
     >
-      ダイアログ
-    </button>
-    <button
-      type="button"
-    >
-      1のページへ移動
-    </button>
+      <button
+        class="button --minor"
+        type="button"
+      >
+        ダイアログ
+      </button>
+      <button
+        class="button --basic"
+        type="button"
+      >
+        1のページへ移動
+      </button>
+    </div>
   </div>
 </DocumentFragment>
 `;

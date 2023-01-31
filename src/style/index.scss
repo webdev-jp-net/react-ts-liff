@@ -9,10 +9,8 @@ body {
   margin: 0;
   font-family: 'Hiragino Kaku Gothic ProN', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   font-size: vw(16); // 幅375pxのアートボードで16px相当
-  // color: $c_dark;
-  color: $c_lightness;
-  // background-color: $c_lightness;
-  background-color: $c_dark;
+  color: $c_dark;
+  background-color: $c_lightness;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

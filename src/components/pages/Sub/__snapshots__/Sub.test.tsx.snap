@@ -11,12 +11,20 @@ exports[`Sub Subのスナップショット 1`] = `
     <p>
       ここへページの内容を表示
     </p>
-    <button
-      type="button"
+    <div
+      class="menu"
     >
-      HOMEへ移動
-    </button>
+      <button
+        class="button --basic"
+        type="button"
+      >
+        HOMEへ移動
+      </button>
+    </div>
     <div>
+      <p>
+        文字をinputで書き換えられます
+      </p>
       <p>
         ダミーテキスト
       </p>
@@ -24,9 +32,10 @@ exports[`Sub Subのスナップショット 1`] = `
         type="text"
       />
       <button
+        class="button --basic"
         type="button"
       >
-        ダミーテキスト更新
+        更新
       </button>
     </div>
   </div>
