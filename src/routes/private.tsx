@@ -2,8 +2,6 @@ import { FC } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { Dialog } from 'layout/dialog';
-
 import { Home } from 'components/pages/Home';
 import { Sub } from 'components/pages/Sub';
 
@@ -14,7 +12,6 @@ export const Private: FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/sub/:id" element={<Sub />} />
       </Routes>
-      <Dialog />
     </>
   );
 };
