@@ -51,10 +51,12 @@ export const Sub: FC = () => {
           HOMEへ移動
         </Button>
       </div>
-      <div>
+      <hr />
+      <div className={styles.field}>
         <p>文字をinputで書き換えられます</p>
-        <p>{dummyText}</p>
+        <p className={styles.preview}>{dummyText}</p>
         <input
+          placeholder="更新ボタンで入力した文字が表示されます"
           type="text"
           onInput={e => {
             setTmpValue(e.currentTarget.value);
