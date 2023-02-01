@@ -16,12 +16,6 @@ exports[`Home Homeのスナップショット 1`] = `
       class="menu"
     >
       <button
-        class="button --minor"
-        type="button"
-      >
-        ダイアログ
-      </button>
-      <button
         class="button --basic"
         type="button"
       >
