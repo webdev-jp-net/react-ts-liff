@@ -1,0 +1,11 @@
+@use 'style/_variable' as *;
+
+.home {
+  position: relative;
+}
+
+.menu {
+  display: grid;
+  gap: rem(18) rem(12);
+  padding: rem(24);
+}

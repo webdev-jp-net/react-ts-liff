@@ -1,0 +1,70 @@
+@use 'style/_variable' as *;
+
+.button {
+  position: relative;
+  min-height: rem(36);
+  padding: 0 1.5em;
+  font-size: rem(16);
+  font-weight: $f_bold;
+  line-height: 1;
+  color: $c_darkness;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: rem(4);
+  appearance: normal;
+}
+
+// 基本
+.button.--basic {
+  color: $c_lightness;
+  background-color: $c_darkness;
+  background-position: center top;
+  background-size: 100% 200%;
+  border: rem(2) solid $c_darkness;
+  box-shadow: 0 0 0 $c_shadow, 0 0 0 $c_shadow;
+  transition: color $t_ease, background-color $t_ease, border-color $t_ease;
+
+  // hover
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      color: $c_darkness;
+      background-color: $c_lightness;
+      box-shadow: 0 0 rem(4) $c_shadow, 0 0 rem(8) $c_shadow;
+    }
+  }
+
+  // 非活性
+  &:disabled {
+    pointer-events: none;
+    background-color: $c_disabled;
+    border-color: $c_disabled;
+  }
+}
+
+// 補助
+.button.--minor {
+  color: $c_darkness;
+  background-color: $c_lightness;
+  background-position: center top;
+  background-size: 100% 200%;
+  border: rem(2) solid $c_darkness;
+  box-shadow: 0 0 0 $c_shadow, 0 0 0 $c_shadow;
+  transition: color $t_ease, background-color $t_ease, border-color $t_ease;
+
+  // hover
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      color: $c_lightness;
+      background-color: $c_darkness;
+      box-shadow: 0 0 rem(4) $c_shadow, 0 0 rem(8) $c_shadow;
+    }
+  }
+
+  // 非活性
+  &:disabled {
+    color: $c_disabled;
+    pointer-events: none;
+    border-color: $c_disabled;
+  }
+}

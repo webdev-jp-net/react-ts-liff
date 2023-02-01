@@ -1,23 +1,17 @@
 import { FC } from 'react';
 
-// router
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-// pages
-import { Home } from '../pages/home';
-import { Sub } from '../pages/sub';
-
-// layout
-import { Dialog } from '../layout/dialog';
+import { Home } from 'components/pages/Home';
+import { Sub } from 'components/pages/Sub';
 
 export const Private: FC = () => {
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sub/:id" element={<Sub />} />
       </Routes>
-      <Dialog />
-    </BrowserRouter>
+    </>
   );
 };

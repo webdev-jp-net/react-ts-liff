@@ -1,18 +1,18 @@
-import { render } from 'react-dom';
-
-// router
-import { Routes } from './routes/routes';
-
-// redux
 import { Provider } from 'react-redux';
+
+import { createRoot } from 'react-dom/client';
+
+import { Routes } from './routes/routes';
 import { store } from './store/index';
 
-// asset
-import './assets/style/index.scss';
+import './style/index.scss';
 
-render(
+const container = document.getElementById('root');
+if (!container) throw new Error('Failed to find the root element');
+const root = createRoot(container);
+
+root.render(
   <Provider store={store}>
     <Routes />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );

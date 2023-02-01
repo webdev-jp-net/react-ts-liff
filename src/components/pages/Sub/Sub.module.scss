@@ -1,0 +1,22 @@
+@use 'style/_variable' as *;
+
+.sub {
+  position: relative;
+}
+
+.menu {
+  display: grid;
+  gap: rem(18) rem(12);
+  padding: rem(24);
+}
+
+.field {
+  display: grid;
+  gap: rem(18) rem(12);
+  padding: rem(24);
+}
+
+.preview {
+  padding: 0.5em;
+  background: $c_bg;
+}
