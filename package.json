@@ -48,8 +48,8 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@line/bot-sdk": "^7.5.0",
-    "@line/liff": "^2.20.1",
+    "@line/bot-sdk": "^7.5.2",
+    "@line/liff": "^2.22.3",
     "@reduxjs/toolkit": "^1.8.2",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/builder-webpack5": "^6.5.9",
