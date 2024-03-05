@@ -1,49 +1,31 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react'
 
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 
-import reportWebVitals from 'reportWebVitals';
+import { RootState } from 'store'
 
-import { Button } from 'components/parts/Button';
-import { RootState } from 'store';
+import { usePageTitle } from 'hooks/usePageTitle'
 
-import { usePageTitle } from 'hooks/usePageTitle';
-
-import styles from './Home.module.scss';
-
-// import { Hoge } from 'components/hoge';
-
-// import { Fuga } from '@types/fuga';
+import styles from './Home.module.scss'
 
 export const Home: FC = () => {
-  const navigate = useNavigate();
-
-  const { userId } = useSelector((state: RootState) => state.user);
-
-  // ページを表示したとき
-  useEffect(() => {
-    reportWebVitals(console.log);
-  }, []);
+  const { userId } = useSelector((state: RootState) => state.user)
 
   // ページタイトル
-  usePageTitle(`HOME`);
+  usePageTitle(`HOME`)
 
   return (
-    <div className={`l-page ${styles.home}`}>
-      <h1>HOME</h1>
-      <p>ここへページの内容を表示</p>
-      <p>{userId}</p>
-      <div className={styles.menu}>
-        <Button
-          handleClick={() => {
-            navigate('/sub/1');
-          }}
-        >
-          1のページへ移動
-        </Button>
+    <div className={styles.page} data-testid="not-found">
+      <div className={styles.body}>
+        <h1 className={styles.title}>Home</h1>
+        <p className={styles.paragraph}>ここへページの内容を表示</p>
+        <p className={styles.paragraph}>{userId}</p>
+        <p className={styles.paragraph}>
+          <Link to="/sub/1">1のページへ移動</Link>
+        </p>
       </div>
     </div>
-  );
-};
+  )
+}

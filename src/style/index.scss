@@ -2,20 +2,30 @@
 @use '_variable' as *;
 
 // GoogleFonts
-// @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Murecho:wght@100..900&display=swap');
+
+// basic style
+html {
+  height: 100%;
+  font-size: vw(16); // 幅375pxのアートボードで16px相当
+}
 
 body {
   min-height: 100%;
   margin: 0;
-  font-family: 'Hiragino Kaku Gothic ProN', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  font-size: vw(16); // 幅375pxのアートボードで16px相当
-  color: $c_dark;
-  background-color: $c_lightness;
+  font-family:
+    Murecho,
+    'Hiragino Kaku Gothic ProN',
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    sans-serif;
+  font-size: 1rem; // 幅375pxのアートボードで16px相当
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // ダイアログの背後をスクロールさせない
-  &.isFixedScroll {
+  // 背後をスクロールさせない
+  &.--isFixedScroll {
     height: 100%;
     overflow: hidden;
   }
@@ -25,7 +35,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.l-body {
+[id='root'] {
   position: relative;
   z-index: 1;
+  min-height: 100svh;
 }

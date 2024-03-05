@@ -1,69 +1,57 @@
-/* eslint @typescript-eslint/ban-ts-comment: 0 */
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
 
-import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useParams, Link } from 'react-router-dom'
 
-import { Button } from 'components/parts/Button';
-import { RootState } from 'store';
-import { updateDummyText } from 'store/hogefuga';
+import { RootState } from 'store'
+import { updateDummyText } from 'store/hogefuga'
 
-import { usePageTitle } from 'hooks/usePageTitle';
+import { usePageTitle } from 'hooks/usePageTitle'
 
-import styles from './Sub.module.scss';
+import { Button } from 'components/parts/Button'
 
-// import { Hoge } from 'components/hoge';
-
-// import { Fuga } from '@types/fuga';
-
-// function component
+import styles from './Sub.module.scss'
 
 export const Sub: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const { dummyText } = useSelector((state: RootState) => state.hogefuga);
+  const { dummyText } = useSelector((state: RootState) => state.hogefuga)
 
-  const [tmpValue, setTmpValue] = useState<string>('');
+  const [tmpValue, setTmpValue] = useState<string>('')
 
   // テキスト更新
   const updateValue = () => {
-    dispatch(updateDummyText(tmpValue));
-  };
+    dispatch(updateDummyText(tmpValue))
+  }
 
   // ページタイトル
-  usePageTitle(`subページ`);
+  usePageTitle(`sub ${id} ページ`)
 
   return (
-    <div className={`l-page ${styles.sub}`}>
-      <h1>{id} のページ</h1>
-      <p>ここへページの内容を表示</p>
-
-      <div className={styles.menu}>
-        <Button
-          handleClick={() => {
-            navigate('/');
-          }}
-        >
-          HOMEへ移動
-        </Button>
-      </div>
-      <hr />
-      <div className={styles.field}>
-        <p>文字をinputで書き換えられます</p>
-        <p className={styles.preview}>{dummyText}</p>
-        <input
-          placeholder="更新ボタンで入力した文字が表示されます"
-          type="text"
-          onInput={e => {
-            setTmpValue(e.currentTarget.value);
-          }}
-        />
-        <Button handleClick={updateValue}>更新</Button>
+    <div className={styles.page} data-testid="not-found">
+      <div className={styles.body}>
+        <h1 className={styles.title}>{`sub ${id} ページ`}</h1>
+        <p className={styles.paragraph}>ここへページの内容を表示</p>
+        <hr />
+        <div className={styles.field}>
+          <p>文字をinputで書き換えられます</p>
+          <p className={styles.preview}>{dummyText}</p>
+          <input
+            placeholder="更新ボタンで入力した文字が表示されます"
+            type="text"
+            onInput={e => {
+              setTmpValue(e.currentTarget.value)
+            }}
+          />
+          <Button handleClick={updateValue}>更新</Button>
+        </div>
+        <p className={styles.paragraph}>
+          <Link to="/">HOMEへ移動</Link>
+        </p>
       </div>
     </div>
-  );
-};
+  )
+}

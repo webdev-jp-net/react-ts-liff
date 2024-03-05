@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000" />
+    <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
+    <title>LIFFアプリ開発セット</title>
+    <meta name="robots" content="noindex" />
+    <link rel="apple-touch-icon" href="/logo192.png" sizes="192x192" />
+    <style>
+      /* loading */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(359deg);
+        }
+      }
+      #root:empty {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      #root:empty::before {
+        content: '';
+        display: block;
+        z-index: -1;
+        width: 48px;
+        height: 48px;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23dddddd7" d="M12,22c-1.4,0-2.7-0.3-3.9-0.8S5.8,20,4.9,19.1s-1.6-2-2.2-3.2S2,13.4,2,12c0-1.4,0.3-2.7,0.8-3.9S4,5.8,4.9,4.9 s2-1.6,3.2-2.2S10.6,2,12,2v2C9.8,4,7.9,4.8,6.3,6.3S4,9.8,4,12s0.8,4.1,2.3,5.7C7.9,19.2,9.8,20,12,20s4.1-0.8,5.7-2.3 c1.6-1.6,2.3-3.4,2.3-5.7h2c0,1.4-0.3,2.7-0.8,3.9s-1.2,2.3-2.1,3.2s-2,1.6-3.2,2.1S13.4,22,12,22z"/></svg>')
+          no-repeat;
+        pointer-events: none;
+        animation: spin 1s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

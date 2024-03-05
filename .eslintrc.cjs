@@ -6,35 +6,18 @@ module.exports = {
     es6: true,
     commonjs: true,
   },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2018,
-    ecmaFeatures: {
-      jsx: true,
-    },
-    sourceType: 'module',
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  plugins: ['react-hooks', 'react', '@typescript-eslint'],
-  extends: [
-    'react-app',
-    'react-app/jest',
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  ignorePatterns: ['public/*.js'],
+  plugins: ['react-refresh', 'eslint-plugin-import'],
+  extends: ['prettier', 'plugin:prettier/recommended', 'plugin:@typescript-eslint/recommended'],
   // add your custom rules here
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-unused-vars': 1,
     'import/order': [
       'warn',
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'object', 'type', 'index'],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'object', 'index', 'type'],
         'newlines-between': 'always',
         alphabetize: {
           order: 'asc',
@@ -42,27 +25,7 @@ module.exports = {
         },
         pathGroups: [
           {
-            pattern: 'reportWebVitals',
-            group: 'external',
-            position: 'before',
-          },
-          {
-            pattern: 'liff',
-            group: 'external',
-            position: 'before',
-          },
-          {
             pattern: '@storybook/*',
-            group: 'builtin',
-            position: 'before',
-          },
-          {
-            pattern: 'react-redux',
-            group: 'builtin',
-            position: 'before',
-          },
-          {
-            pattern: 'react-router-dom',
             group: 'builtin',
             position: 'before',
           },
@@ -72,18 +35,18 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: 'components/features/e**',
-            group: 'internal',
+            pattern: 'react-redux',
+            group: 'builtin',
             position: 'before',
           },
           {
-            pattern: 'components/parts/e**',
-            group: 'internal',
+            pattern: '@line/liff?*',
+            group: 'external',
             position: 'before',
           },
           {
-            pattern: 'components/pages/**',
-            group: 'internal',
+            pattern: 'react-router-dom',
+            group: 'builtin',
             position: 'before',
           },
           {
@@ -97,34 +60,42 @@ module.exports = {
             position: 'before',
           },
           {
+            pattern: 'components/layout/**',
+            group: 'parent',
+            position: 'before',
+          },
+          {
+            pattern: 'components/pages/**',
+            group: 'parent',
+            position: 'before',
+          },
+          {
+            pattern: 'components/parts/**',
+            group: 'object',
+            position: 'before',
+          },
+          {
             pattern: 'hooks/**',
             group: 'internal',
             position: 'before',
           },
           {
             pattern: 'style/**/*.scss',
-            group: 'internal',
+            group: 'index',
             position: 'before',
           },
           {
             pattern: './**/*.*',
-            group: 'sibling',
+            group: 'index',
             position: 'before',
           },
           {
-            pattern: '@types/**/*.d.ts',
+            pattern: 'types/**/*',
             group: 'type',
             position: 'before',
           },
         ],
-        pathGroupsExcludedImportTypes: [
-          'react',
-          'react-router-dom',
-          'react-redux',
-          '@storybook/react',
-          'liff',
-          'reportWebVitals',
-        ],
+        pathGroupsExcludedImportTypes: [],
       },
     ],
   },
@@ -137,4 +108,4 @@ module.exports = {
       },
     },
   ],
-};
+}

@@ -1,24 +1,37 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { BrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
+import { useAuthLiff } from 'hooks/useAuthLiff'
 
-import { RootState } from 'store';
+import { Layout } from 'components/layout/Layout'
 
-import { useAuthLiff } from 'hooks/useAuthLiff';
+import { Home } from 'components/pages/Home'
+import { NotFound } from 'components/pages/NotFound'
+import { Sub } from 'components/pages/Sub'
 
-import { Private } from './private';
+import { authenticatedRouter } from './authenticated'
+import { unAuthRouter } from './unauthenticated'
 
-export const Routes: FC = () => {
-  useAuthLiff(); // LIFFにログインする
+export const App: FC = () => {
+  useAuthLiff() // LIFFにログインする
 
-  const { userId } = useSelector((state: RootState) => state.user);
-  return userId ? (
-    <BrowserRouter>
-      <Private />
-    </BrowserRouter>
-  ) : (
-    <p>login ...</p>
-  );
-};
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+          // element: <Navigate to='/' replace state={{ fromRedirect: true }} />,
+        },
+        unAuthRouter,
+        authenticatedRouter,
+        { path: '/sub/:id', element: <Sub /> },
+      ],
+    },
+  ])
+
+  return <RouterProvider router={router} />
+}
