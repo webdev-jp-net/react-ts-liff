@@ -60,6 +60,11 @@ module.exports = {
             position: 'before',
           },
           {
+            pattern: 'hooks/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
             pattern: 'components/layout/**',
             group: 'parent',
             position: 'before',
@@ -75,17 +80,17 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: 'hooks/**',
-            group: 'internal',
-            position: 'before',
-          },
-          {
             pattern: 'style/**/*.scss',
-            group: 'index',
+            group: 'object',
             position: 'before',
           },
           {
             pattern: './**/*.*',
+            group: 'index',
+            position: 'before',
+          },
+          {
+            pattern: './*.*',
             group: 'index',
             position: 'before',
           },

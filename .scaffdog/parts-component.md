@@ -9,49 +9,50 @@ questions:
 
 # `{{ inputs.name | pascal }}/index.ts`
 ```typescript
-export { {{ inputs.name | pascal }} } from './{{ inputs.name | pascal }}';
+export { {{ inputs.name | pascal }} } from './{{ inputs.name | pascal }}'
 
 ```
 
 # `{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.tsx`
 ```typescript
-import { FC } from 'react';
+import { FC, ReactNode } from 'react'
 
-import styles from './{{ inputs.name | pascal }}.module.scss';
+import styles from './{{ inputs.name | pascal }}.module.scss'
 
 type {{ inputs.name | pascal }}Props = {
-  type?: 'primary' | 'secondary';
-  addClass?: string[];
-  handleClick?: () => void;
-};
+  children: ReactNode
+  addClass?: string[]
+}
 
-export const {{ inputs.name | pascal }}: FC<{{ inputs.name | pascal }}Props> = ({ type = 'primary', addClass = [], handleClick }) => {
+export const {{ inputs.name | pascal }}: FC<{{ inputs.name | pascal }}Props> = ({ children, addClass = [] }) => {
+  const customClass = Array.isArray(addClass) ? addClass : [addClass]
   return (
-    <div className={[styles.{{ inputs.name | lower }}, ...addClass, type && styles[`--${type}`]].join(' ')}>
+    <div className={[styles.{{ inputs.name | camel }}, ...customClass].join(' ')}>
       <>{{ inputs.name | pascal }}</>
-      {handleClick && <button onClick={handleClick}>click</button>}
+      {children}
     </div>
-  );
-};
+  )
+}
 
 ```
 
 # `{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.stories.tsx`
 ```typescript
-import { action } from '@storybook/addon-actions';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+// import { action } from '@storybook/addon-actions'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { {{ inputs.name | pascal }} } from './{{ inputs.name | pascal }}';
+import { {{ inputs.name | pascal }} } from './{{ inputs.name | pascal }}'
 
 export default {
-  title: '{{ inputs.name | pascal }}',
+  title: 'parts/{{ inputs.name | pascal }}',
   component: {{ inputs.name | pascal }},
+} as Meta
+
+export const Basic: StoryObj<typeof {{ inputs.name | pascal }}> = {
   args: {
-    type: 'primary',
-    handleClick: action(''),
+    children: 'children',
   },
-} as ComponentMeta<typeof {{ inputs.name | pascal }}>;
-export const Basic: ComponentStory<typeof {{ inputs.name | pascal }}> = args => <{{ inputs.name | pascal }} {...args}></{{ inputs.name | pascal }}>;
+}
 
 ```
 
@@ -60,7 +61,7 @@ export const Basic: ComponentStory<typeof {{ inputs.name | pascal }}> = args => 
 ```scss
 @use "style/_variable" as *;
 
-.{{ inputs.name | lower }} {
+.{{ inputs.name | camel }} {
   //
 }
 
