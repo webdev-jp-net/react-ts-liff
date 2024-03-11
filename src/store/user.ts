@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
+import storage from 'redux-persist/lib/storage'
 
 type State = {
-  userId?: string;
-};
+  userId?: string
+}
 
-const initialState: State = {};
+const initialState: State = {}
 
 const user = createSlice({
   name: 'user',
@@ -13,13 +14,20 @@ const user = createSlice({
 
   reducers: {
     updateUserId: (state, action) => {
-      state.userId = action.payload;
+      state.userId = action.payload
     },
   },
-});
+})
 
 // Action Creators
-export const { updateUserId } = user.actions;
+export const { updateUserId } = user.actions
 
 // Reducer
-export default user.reducer;
+export default user.reducer
+
+// LocalStorageに保存する設定
+export const userPersistConfig = {
+  key: 'user',
+  storage,
+  whitelist: ['name'],
+}

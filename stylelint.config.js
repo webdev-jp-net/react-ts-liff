@@ -70,4 +70,4 @@ module.exports = {
     'length-zero-no-unit': true,
     'selector-class-pattern': null,
   },
-};
+}
