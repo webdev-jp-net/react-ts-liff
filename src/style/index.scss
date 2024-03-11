@@ -37,6 +37,6 @@ code {
 
 [id='root'] {
   position: relative;
-  z-index: 1;
+  display: grid;
   min-height: 100svh;
 }

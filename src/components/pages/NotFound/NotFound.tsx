@@ -10,7 +10,7 @@ export const NotFound: FC = () => {
   usePageTitle(`Page Not Found - JURASSIC PARK THE SECRET MISSION`)
 
   return (
-    <div className={styles.page} data-testid="not-found">
+    <div className={styles.page}>
       <div className={styles.body}>
         <h1 className={styles.title}>404 Page Not Found</h1>
         <p className={styles.paragraph}>ページが見つかりませんでした。</p>

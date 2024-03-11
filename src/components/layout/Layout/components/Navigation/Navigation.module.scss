@@ -1,0 +1,10 @@
+@use 'style/_variable' as *;
+
+.navigation {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  place-content: center;
+  height: 3rem;
+  margin: auto 0 0;
+}

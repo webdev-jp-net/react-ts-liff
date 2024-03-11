@@ -2,6 +2,8 @@ import { FC, useEffect } from 'react'
 
 import { Outlet, useLocation } from 'react-router-dom'
 
+import { Navigation } from './components/Navigation'
+
 import styles from './Layout.module.scss'
 
 export const Layout: FC = () => {
@@ -17,7 +19,7 @@ export const Layout: FC = () => {
   return (
     <div className={styles.layout}>
       <Outlet />
-      <div>navigation</div>
+      <Navigation />
     </div>
   )
 }

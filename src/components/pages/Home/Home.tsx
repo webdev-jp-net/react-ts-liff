@@ -17,7 +17,7 @@ export const Home: FC = () => {
   usePageTitle(`HOME`)
 
   return (
-    <div className={styles.page} data-testid="not-found">
+    <div className={styles.page}>
       <div className={styles.body}>
         <h1 className={styles.title}>Home</h1>
         <p className={styles.paragraph}>ここへページの内容を表示</p>

@@ -31,7 +31,7 @@ export const Sub: FC = () => {
   usePageTitle(`sub ${id} ページ`)
 
   return (
-    <div className={styles.page} data-testid="not-found">
+    <div className={styles.page}>
       <div className={styles.body}>
         <h1 className={styles.title}>{`sub ${id} ページ`}</h1>
         <p className={styles.paragraph}>ここへページの内容を表示</p>
