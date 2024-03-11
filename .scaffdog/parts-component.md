@@ -20,7 +20,7 @@ import { FC, ReactNode } from 'react'
 import styles from './{{ inputs.name | pascal }}.module.scss'
 
 type {{ inputs.name | pascal }}Props = {
-  children: ReactNode
+  children?: ReactNode
   addClass?: string[]
 }
 
@@ -29,7 +29,7 @@ export const {{ inputs.name | pascal }}: FC<{{ inputs.name | pascal }}Props> = (
   return (
     <div className={[styles.{{ inputs.name | camel }}, ...customClass].join(' ')}>
       <>{{ inputs.name | pascal }}</>
-      {children}
+      {children && children}
     </div>
   )
 }
