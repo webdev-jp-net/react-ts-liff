@@ -12,8 +12,8 @@ questions:
 
 ```typescript
 export const use{{inputs.name | pascal}} = () => {
-  return null;
-};
+  return null
+}
 
 ```
 
@@ -21,19 +21,19 @@ export const use{{inputs.name | pascal}} = () => {
 # `__tests__/use{{ inputs.name | pascal }}.test.ts`
 
 ```typescript
-import { cleanup, renderHook } from '@testing-library/react';
-import { use{{ inputs.name | pascal }} } from '../use{{ inputs.name | pascal }}';
+import { cleanup, renderHook } from '@testing-library/react'
+import { use{{ inputs.name | pascal }} } from '../use{{ inputs.name | pascal }}'
 
 describe('use{{ inputs.name | pascal }}のテスト', () => {
   beforeEach(() => {
-    cleanup();
-  });
+    cleanup()
+  })
   it('use{{ inputs.name | pascal }}の機能テスト', () => {
     const { result } = renderHook(() => {
-      return use{{ inputs.name | pascal }}();
-    });
-    // expect().toBe();
-  });
-});
+      return use{{ inputs.name | pascal }}()
+    })
+    // expect().toBe()
+  })
+})
 
 ```

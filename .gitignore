@@ -65,8 +65,9 @@ typings/
 # VS code
 .vscode
 
-# React App
+# build output
 build
+dist
 
 # vuepress build output
 .vuepress/dist
